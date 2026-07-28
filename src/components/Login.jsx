@@ -6,6 +6,11 @@ const Login = () => {
 
   const handleLogin = (e) => {
     e.preventDefault();
+
+    if (!name) {
+      return alert("kindly enter a default name");
+    }
+
     setUser({ name: name, isAuth: true });
   };
   return (
