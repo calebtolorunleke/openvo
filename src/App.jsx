@@ -1,10 +1,15 @@
-import React from "react";
+import React, { useState } from "react";
 
 const App = () => {
-  const name = "Caleb";
+  const [name, setName] = useState("");
   return (
     <div>
-      <h1>Hello World, I'm {name} </h1>
+      <input
+        type="text"
+        placeholder="Name..."
+        onChange={(e) => setName(e.target.value)}
+        value={name}
+      />{" "}
     </div>
   );
 };
