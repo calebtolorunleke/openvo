@@ -2,10 +2,11 @@ import React, { useState } from "react";
 
 const Login = () => {
   const [name, setName] = useState("");
+  const [user, setUser] = useState({ name: "n", isAuth: false });
 
   const handleLogin = (e) => {
     e.preventDefault();
-    alert("Login");
+    setUser({ name: name, isAuth: true });
   };
   return (
     <div>
@@ -22,6 +23,8 @@ const Login = () => {
           Login
         </button>
       </form>
+
+      {user.isAuth && <h1>user logged in</h1>}
     </div>
   );
 };
