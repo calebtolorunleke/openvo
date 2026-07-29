@@ -1,8 +1,9 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
+import { AuthContext } from "../AuthContext";
 
 const Login = () => {
   const [name, setName] = useState("");
-  const [user, setUser] = useState({ name: "n", isAuth: false });
+  const { user, login } = useContext(AuthContext);
 
   const handleLogin = (e) => {
     e.preventDefault();
@@ -11,7 +12,7 @@ const Login = () => {
       return alert("kindly enter a default name");
     }
 
-    setUser({ name: name, isAuth: true });
+    login(name);
   };
   return (
     <div>
