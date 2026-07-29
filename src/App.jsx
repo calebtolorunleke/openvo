@@ -14,11 +14,14 @@ const App = () => {
     setUser({ name: name, isAuth: true });
   };
 
+  const logout = (name) => {
+    setUser({ name: "", isAuth: false });
+  };
+
   return (
     <BrowserRouter>
-      <Navbar />{" "}
-      <AuthContext.Provider value={{ user, login }}>
-        {" "}
+      <AuthContext.Provider value={{ user, login, logout }}>
+        <Navbar />{" "}
         <Routes>
           <Route element={<Home />} path="/" />
           <Route element={<About />} path="/about" />

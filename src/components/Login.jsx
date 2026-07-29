@@ -3,7 +3,7 @@ import { AuthContext } from "../AuthContext";
 
 const Login = () => {
   const [name, setName] = useState("");
-  const { user, login } = useContext(AuthContext);
+  const { user, login, logout } = useContext(AuthContext);
 
   const handleLogin = (e) => {
     e.preventDefault();
@@ -13,6 +13,10 @@ const Login = () => {
     }
 
     login(name);
+  };
+
+  const handleLogout = () => {
+    logout(name);
   };
   return (
     <div>
@@ -25,9 +29,21 @@ const Login = () => {
           onChange={(e) => setName(e.target.value)}
           className="bg-gray-400"
         />
-        <button className="bg-gray-600 p-1 rounded px-3" onClick={handleLogin}>
-          Login
-        </button>
+        {!user.isAuth ? (
+          <button
+            className="bg-gray-600 p-1 rounded px-3"
+            onClick={handleLogin}
+          >
+            Login
+          </button>
+        ) : (
+          <button
+            className="bg-gray-600 p-1 rounded px-3"
+            onClick={handleLogout}
+          >
+            Logout
+          </button>
+        )}
       </form>
 
       {user.isAuth && <h1>user logged in</h1>}
