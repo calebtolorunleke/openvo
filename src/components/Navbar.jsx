@@ -7,7 +7,7 @@ export const Navbar = () => {
       <div className="flex gap-10">
         {" "}
         <Link to="/">Home</Link>
-        <Link to="/about">About</Link>
+        <Link to="/about">Profile</Link>
       </div>
       <Link to="/login">Login</Link>
     </div>
