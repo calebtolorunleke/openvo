@@ -58,15 +58,18 @@
 // export default App;
 
 import React from "react";
-import { BrowserRouter, Routes } from "react-router-dom";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
+import Home from "./pages/Home";
+import Auth from "./pages/Auth";
+import Checkout from "./pages/Checkout";
 
 const App = () => {
   return (
     <BrowserRouter>
       <Routes>
-        <Route path="/" />
-        <Route path="/auth" />
-        <Route path="/checkout" />
+        <Route element={<Home />} path="/" />
+        <Route element={<Auth />} path="/auth" />
+        <Route element={<Checkout />} path="/checkout" />
       </Routes>
     </BrowserRouter>
   );
