@@ -22,6 +22,8 @@ const Home = () => {
         </h2>
 
         <div className="grid grid-cols-2 md:grid-cols-3 gap-5 md:gap-7">
+
+          {/* product card component */}
           {products.map((product) => (
             <Productcard key={product.id} product={product} />
           ))}
