@@ -1,22 +1,55 @@
-import React, { useContext } from "react";
+// import React, { useContext } from "react";
+// import { Link } from "react-router-dom";
+// import { AuthContext } from "../AuthContext";
+
+// export const Navbar = () => {
+//   const { user, logout } = useContext(AuthContext);
+
+//   const hanldeLogout = ({ name }) => {
+//     logout(name);
+//   };
+//   return (
+//     <div className="text-purple-600 flex justify-between min-w-2xl pb-10">
+//       <div className="flex gap-10">
+//         {" "}
+//         <Link to="/">Home</Link>
+//         <Link to="/about">Profile</Link>
+//       </div>
+
+//       {user.isAuth ? <button>Logout</button> : <Link to="/login">Login</Link>}
+//     </div>
+//   );
+// };
+
+import React from "react";
 import { Link } from "react-router-dom";
-import { AuthContext } from "../AuthContext";
 
-export const Navbar = () => {
-  const { user, logout } = useContext(AuthContext);
-
-  const hanldeLogout = ({ name }) => {
-    logout(name);
-  };
+const Navbar = () => {
   return (
-    <div className="text-purple-600 flex justify-between min-w-2xl pb-10">
-      <div className="flex gap-10">
-        {" "}
-        <Link to="/">Home</Link>
-        <Link to="/about">Profile</Link>
+    <nav className="bg-white py-3 max-w-7xl mx-auto px-12">
+      <div className="flex justify-between">
+        <Link to="/" className="font-semibold text-xl">
+          ShopHub
+        </Link>
+        <div className="flex gap-10">
+          <Link to="/" className="text-purple-400 underline">
+            Home
+          </Link>
+          <Link to="/checkout" className="text-purple-400 underline">
+            Cart
+          </Link>
+        </div>
+        <div className="flex gap-10">
+          <Link to="/auth" className="text-purple-400 underline">
+            Login
+          </Link>
+          <Link to="/auth" className="text-purple-400 underline">
+            Signup
+          </Link>
+        </div>
       </div>
-
-      {user.isAuth ? <button>Logout</button> : <Link to="/login">Login</Link>}
-    </div>
+    </nav>
   );
 };
+
+export default Navbar;

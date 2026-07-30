@@ -62,10 +62,12 @@ import { BrowserRouter, Route, Routes } from "react-router-dom";
 import Home from "./pages/Home";
 import Auth from "./pages/Auth";
 import Checkout from "./pages/Checkout";
+import Navbar from "./components/Navbar";
 
 const App = () => {
   return (
     <BrowserRouter>
+      <Navbar />
       <Routes>
         <Route element={<Home />} path="/" />
         <Route element={<Auth />} path="/auth" />
