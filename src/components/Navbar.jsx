@@ -25,19 +25,26 @@ import React from "react";
 import { Link } from "react-router-dom";
 
 const Navbar = () => {
+  const navList = [
+    { id: 1, name: "Home", url: "/" },
+    { id: 2, name: "Cart", url: "/checkout" },
+  ];
   return (
     <nav className="bg-white py-3 max-w-7xl mx-auto px-12">
       <div className="flex justify-between items-center">
         <Link to="/" className="font-semibold text-xl">
           ShopHub
-        </Link>
+        </Link>{" "}
         <div className="flex gap-10">
-          <Link to="/" className="text-purple-400 underline">
-            Home
-          </Link>
-          <Link to="/checkout" className="text-purple-400 underline">
-            Cart
-          </Link>
+          {navList.map((n) => (
+            <Link
+              to={n.url}
+              className="text-gray-700-400 hover:text-blue-400"
+              key={n.id}
+            >
+              {n.name}
+            </Link>
+          ))}{" "}
         </div>
         <div className="flex gap-3 items-center">
           <Link
