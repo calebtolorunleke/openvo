@@ -35,23 +35,35 @@
 
 // export default App;
 
-import React, { useEffect } from "react";
+// import React, { useEffect } from "react";
+
+// const App = () => {
+
+//   useEffect(() => {
+//     const fetchUser = async () => {
+//       try {
+//         const response = await fetch(
+//           "https://jsonplaceholder.typicode.com/users",
+//         );
+//         const data = response.json();
+//         console.log(data);
+//       } catch (error) {}
+//     };
+//     fetchUser();
+//   }, []);
+
+//   return <div>App</div>;
+// };
+
+// export default App;
+
+
+import React from 'react'
 
 const App = () => {
-  useEffect(() => {
-    const fetchUser = async () => {
-      try {
-        const response = await fetch(
-          "https://jsonplaceholder.typicode.com/users",
-        );
-        const data = response.json();
-        console.log(data);
-      } catch (error) {}
-    };
-    fetchUser();
-  }, []);
+  return (
+    <div>App</div>
+  )
+}
 
-  return <div>App</div>;
-};
-
-export default App;
+export default App
