@@ -27,7 +27,7 @@ import { Link } from "react-router-dom";
 const Navbar = () => {
   return (
     <nav className="bg-white py-3 max-w-7xl mx-auto px-12">
-      <div className="flex justify-between">
+      <div className="flex justify-between items-center">
         <Link to="/" className="font-semibold text-xl">
           ShopHub
         </Link>
@@ -39,11 +39,17 @@ const Navbar = () => {
             Cart
           </Link>
         </div>
-        <div className="flex gap-10">
-          <Link to="/auth" className="text-purple-400 underline">
+        <div className="flex gap-3 items-center">
+          <Link
+            to="/auth"
+            className="text-white bg-gray-400 px-3 py-2 text-sm rounded "
+          >
             Login
           </Link>
-          <Link to="/auth" className="text-purple-400 underline">
+          <Link
+            to="/auth"
+            className="bg-blue-400 text-sm text-white px-3 py-2 rounded"
+          >
             Signup
           </Link>
         </div>
