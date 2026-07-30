@@ -1,22 +1,25 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import { useForm } from "react-hook-form";
+import { AuthContext } from "../context/AuthContext";
 
 const Auth = () => {
   const [mode, setMode] = useState("login");
+  const { signup, user } = useContext(AuthContext);
   const {
     register,
     handleSubmit,
     formState: { errors },
   } = useForm();
 
-  const onSubmit = () => {
-    alert("the user has signed up");
+  const onSubmit = (data) => {
+    signup(data);
   };
 
   return (
     <div className="max-w-7xl mx-auto px-12 flex justify-center">
       <div className="pt-10">
         <div className="bg-white px-10 py-7 rounded w-87.5">
+          {user && <p>User logged in: {user.email}</p>}
           <h1 className="text-xl font-bold text-gray-700 pb-4">
             {mode === "signup" ? "Sign Up" : "Sign In"}
           </h1>

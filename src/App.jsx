@@ -63,16 +63,19 @@ import Home from "./pages/Home";
 import Auth from "./pages/Auth";
 import Checkout from "./pages/Checkout";
 import Navbar from "./components/Navbar";
+import { AuthProvider } from "./context/AuthContext";
 
 const App = () => {
   return (
     <BrowserRouter>
-      <Navbar />
-      <Routes>
-        <Route element={<Home />} path="/" />
-        <Route element={<Auth />} path="/auth" />
-        <Route element={<Checkout />} path="/checkout" />
-      </Routes>
+      <AuthProvider>
+        <Navbar />
+        <Routes>
+          <Route element={<Home />} path="/" />
+          <Route element={<Auth />} path="/auth" />
+          <Route element={<Checkout />} path="/checkout" />
+        </Routes>
+      </AuthProvider>
     </BrowserRouter>
   );
 };
