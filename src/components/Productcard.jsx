@@ -4,7 +4,11 @@ import { Link } from "react-router-dom";
 const Productcard = ({ product }) => {
   return (
     <div className="rounded-xl overflow-hidden bg-white shadow-sm hover:shadow-md transition-all duration-300 hover:-translate-y-2">
-      <img src={product.image} alt="" className="w-full h-50 object-cover " />
+      <img
+        src={product.image}
+        alt={product.name}
+        className="w-full h-50 object-cover "
+      />
       <div className="py-7 bg-white px-3">
         <h3 className="text-gray-600 font-semibold pb-2 line-clamp-2 overflow h-12 overflow-hidden">
           {product.name}
