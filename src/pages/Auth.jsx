@@ -1,15 +1,30 @@
 import React, { useState } from "react";
+import { useForm } from "react-hook-form";
 
 const Auth = () => {
   const [mode, setMode] = useState("login");
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm();
+
+  const onSubmit = () => {
+    alert("the user has signed up");
+  };
+
   return (
     <div className="max-w-7xl mx-auto px-12 flex justify-center">
       <div className="pt-10">
-        <div className="bg-white px-10 py-10 rounded w-87.5">
+        <div className="bg-white px-10 py-7 rounded w-87.5">
           <h1 className="text-xl font-bold text-gray-700 pb-4">
             {mode === "signup" ? "Sign Up" : "Sign In"}
           </h1>
-          <form action="" className="flex flex-col gap-3">
+          <form
+            action=""
+            className="flex flex-col gap-3"
+            onSubmit={handleSubmit(onSubmit)}
+          >
             <div className="flex flex-col gap-2 w-full">
               <label htmlFor="email" className="text-gray-500 text-sm">
                 Email
@@ -17,9 +32,11 @@ const Auth = () => {
               <input
                 type="email"
                 id="email"
+                {...register("email", { required: "Email is required" })}
                 className="border border-gray-200 rounded py-1"
               />
-            </div>{" "}
+            </div>
+            {errors.email && <span>{errors.email.message}</span>}
             <div className="flex flex-col gap-2 w-full">
               <label htmlFor="password" className="text-gray-500 text-sm">
                 Password
@@ -27,11 +44,28 @@ const Auth = () => {
               <input
                 type="password"
                 id="password"
+                {...register("password", {
+                  required: "Password is required",
+                  minLength: {
+                    value: 6,
+                    message: "Password must be at least 6 characters",
+                  },
+                  maxLength: {
+                    value: 12,
+                    message: "Password must be less than 12 characters",
+                  },
+                })}
                 className="border border-gray-200 rounded py-1"
               />
+              {errors.password && (
+                <span className="text-red-600">{errors.password.message}</span>
+              )}
             </div>{" "}
             <div className="pt-5">
-              <button className="px-4 py-2 bg-blue-400 rounded text-white text-sm">
+              <button
+                className="px-4 py-2 bg-blue-400 rounded text-white text-sm"
+                type="submit"
+              >
                 {mode === "signup" ? "Sign Up" : "Sign In"}
               </button>
             </div>
