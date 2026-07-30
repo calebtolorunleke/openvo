@@ -63,7 +63,11 @@ import { BrowserRouter, Routes } from "react-router-dom";
 const App = () => {
   return (
     <BrowserRouter>
-      <Routes></Routes>
+      <Routes>
+        <Route path="/" />
+        <Route path="/auth" />
+        <Route path="/checkout" />
+      </Routes>
     </BrowserRouter>
   );
 };
