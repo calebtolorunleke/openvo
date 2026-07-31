@@ -4,7 +4,7 @@ import { AuthContext } from "../context/AuthContext";
 
 const Auth = () => {
   const [mode, setMode] = useState("login");
-  const { signup, user } = useContext(AuthContext);
+  const { signup, user, logout } = useContext(AuthContext);
   const {
     register,
     handleSubmit,
@@ -20,6 +20,7 @@ const Auth = () => {
       <div className="pt-10">
         <div className="bg-white px-10 py-7 rounded w-87.5">
           {user && <p>User logged in: {user.email}</p>}
+          <button onClick={() => logout()}>Logout</button>
           <h1 className="text-xl font-bold text-gray-700 pb-4">
             {mode === "signup" ? "Sign Up" : "Sign In"}
           </h1>
