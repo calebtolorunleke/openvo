@@ -18,14 +18,26 @@ export const AuthProvider = ({ children }) => {
     const newUser = { email, password };
     users.push(newUser);
     localStorage.setItem("user", JSON.stringify(users));
-    localStorage.setItem("currentUserEmail", email);
+    // localStorage.setItem("currentUserEmail", email);
 
     setUser({ email });
 
     return { success: true };
   };
 
-  const login = () => {};
+  const login = ({ email, password }) => {
+    const users = JSON.parse(localStorage.getItem("users") || "[]");
+    const user = users.find((u) => u.email === email && u.password === password);
+  
+        if(!user){
+    return{success:false, error:"invalid email or password"}
+  }
+
+  // localStorage.setItem("currentUserEmail",email)
+  setUser({email})
+
+  };
+
 
   const logout = () => {
     localStorage.removeItem("currentUserEmail");
@@ -34,7 +46,8 @@ export const AuthProvider = ({ children }) => {
   };
 
   return (
-    <AuthContext.Provider value={{ signup, user, logout }}>
+    <AuthContext.Provider value={{ signup, user, logout, login }}>
+
       {children}
     </AuthContext.Provider>
   );

@@ -1,18 +1,34 @@
 import React, { useContext, useState } from "react";
 import { useForm } from "react-hook-form";
 import { AuthContext } from "../context/AuthContext";
+import { useNavigate } from "react-router-dom";
 
 const Auth = () => {
   const [mode, setMode] = useState("login");
-  const { signup, user, logout } = useContext(AuthContext);
+  const [error, setError] = useState(null);
+  const { signup, user, logout, login } = useContext(AuthContext);
   const {
     register,
     handleSubmit,
     formState: { errors },
   } = useForm();
 
+  const navigate = useNavigate();
+
   const onSubmit = (data) => {
-    signup(data);
+    setError(null);
+    let result;
+    if (mode === "signup") {
+      result = signup(data.email, data.password);
+    } else {
+      result = login(data.email, data.password);
+    }
+
+    if (result.success) {
+      navigate("/");
+    } else {
+      setError(result.error);
+    }
   };
 
   return (
@@ -24,6 +40,7 @@ const Auth = () => {
           <h1 className="text-xl font-bold text-gray-700 pb-4">
             {mode === "signup" ? "Sign Up" : "Sign In"}
           </h1>
+          <span className="text-red-600">{error}</span>
           <form
             action=""
             className="flex flex-col gap-3"
