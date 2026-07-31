@@ -21,14 +21,18 @@
 //   );
 // };
 
-import React from "react";
+import React, { useContext } from "react";
 import { Link } from "react-router-dom";
+import { AuthContext } from "../context/AuthContext";
 
 const Navbar = () => {
   const navList = [
     { id: 1, name: "Home", url: "/" },
     { id: 2, name: "Cart", url: "/checkout" },
   ];
+
+  const { user, logout } = useContext(AuthContext);
+
   return (
     <nav className="bg-white py-3 max-w-7xl mx-auto px-12">
       <div className="flex justify-between items-center">
@@ -46,20 +50,27 @@ const Navbar = () => {
             </Link>
           ))}{" "}
         </div>
-        <div className="flex gap-3 items-center">
-          <Link
-            to="/auth"
-            className="text-white bg-gray-400 px-3 py-2 text-sm rounded "
-          >
-            Login
-          </Link>
-          <Link
-            to="/auth"
-            className="bg-blue-400 text-sm text-white px-3 py-2 rounded"
-          >
-            Signup
-          </Link>
-        </div>
+        {!user ? (
+          <div className="flex gap-3 items-center">
+            <Link
+              to="/auth"
+              className="text-white bg-gray-400 px-3 py-2 text-sm rounded "
+            >
+              Login
+            </Link>
+            <Link
+              to="/auth"
+              className="bg-blue-400 text-sm text-white px-3 py-2 rounded"
+            >
+              Signup
+            </Link>{" "}
+          </div>
+        ) : (
+          <div className="flex items-center gap-2">
+            <span className="text-sm text-gray-500">Hello, {user.email}</span>
+            <button onClick={logout} className="text-xs bg-gray-600 text-white px-3 py-1 rounded">Logout</button>
+          </div>
+        )}
       </div>
     </nav>
   );

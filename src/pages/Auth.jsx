@@ -19,9 +19,9 @@ const Auth = () => {
     setError(null);
     let result;
     if (mode === "signup") {
-      result = signup(data.email, data.password);
+      result = signup(data);
     } else {
-      result = login(data.email, data.password);
+      result = login(data);
     }
 
     if (result.success) {
@@ -35,8 +35,6 @@ const Auth = () => {
     <div className="max-w-7xl mx-auto px-12 flex justify-center">
       <div className="pt-10">
         <div className="bg-white px-10 py-7 rounded w-87.5">
-          {user && <p>User logged in: {user.email}</p>}
-          <button onClick={() => logout()}>Logout</button>
           <h1 className="text-xl font-bold text-gray-700 pb-4">
             {mode === "signup" ? "Sign Up" : "Sign In"}
           </h1>
