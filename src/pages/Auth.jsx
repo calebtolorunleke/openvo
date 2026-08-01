@@ -6,7 +6,7 @@ import { useNavigate } from "react-router-dom";
 const Auth = () => {
   const [mode, setMode] = useState("login");
   const [error, setError] = useState(null);
-  const { signup, user, logout, login } = useContext(AuthContext);
+  const { signup, login } = useContext(AuthContext);
   const {
     register,
     handleSubmit,
