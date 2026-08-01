@@ -68,7 +68,12 @@ const Navbar = () => {
         ) : (
           <div className="flex items-center gap-2">
             <span className="text-sm text-gray-500">Hello, {user.email}</span>
-            <button onClick={logout} className="text-xs bg-gray-600 text-white px-3 py-1 rounded">Logout</button>
+            <button
+              onClick={logout}
+              className="text-xs bg-gray-600 text-white px-3 py-1 rounded"
+            >
+              Logout
+            </button>
           </div>
         )}
       </div>
