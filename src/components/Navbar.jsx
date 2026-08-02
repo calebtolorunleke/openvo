@@ -23,7 +23,7 @@
 
 import React, { useContext } from "react";
 import { Link } from "react-router-dom";
-import { AuthContext } from "../context/AuthContext";
+import { useAuth } from "../context/AuthContext";
 
 const Navbar = () => {
   const navList = [
@@ -31,7 +31,7 @@ const Navbar = () => {
     { id: 2, name: "Cart", url: "/checkout" },
   ];
 
-  const { user, logout } = useContext(AuthContext);
+  const { user, logout } = useAuth();
 
   return (
     <nav className="bg-white py-3 max-w-7xl mx-auto px-12">

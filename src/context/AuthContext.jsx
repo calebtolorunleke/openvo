@@ -35,13 +35,13 @@ export const AuthProvider = ({ children }) => {
       return { success: false, error: "invalid email or password" };
     }
 
-    // localStorage.setItem("currentUserEmail",email)
+    localStorage.setItem("currentUserEmail", email);
     setUser({ email });
   };
 
   const logout = () => {
     localStorage.removeItem("currentUserEmail");
-    localStorage.removeItem("users");
+    // localStorage.removeItem("users");
     setUser(null);
   };
 
@@ -52,10 +52,8 @@ export const AuthProvider = ({ children }) => {
   );
 };
 
-
-export const =()=>{
-  const context = useContext(AuthContext)
+export const useAuth = () => {
+  const context = useContext(AuthContext);
 
   return context;
-
-}
+};
