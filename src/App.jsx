@@ -64,6 +64,7 @@ import Auth from "./pages/Auth";
 import Checkout from "./pages/Checkout";
 import Navbar from "./components/Navbar";
 import { AuthProvider } from "./context/AuthContext";
+import ProductDetails from "./pages/ProductDetails";
 
 const App = () => {
   return (
@@ -74,6 +75,7 @@ const App = () => {
           <Route element={<Home />} path="/" />
           <Route element={<Auth />} path="/auth" />
           <Route element={<Checkout />} path="/checkout" />
+          <Route element={<ProductDetails />} path="/products/:id" />
         </Routes>
       </AuthProvider>
     </BrowserRouter>
