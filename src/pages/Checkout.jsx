@@ -2,22 +2,28 @@ import React from "react";
 import { useCart } from "../context/CartContext";
 
 const Checkout = () => {
-  const { getCartItemsWithProducts, removeFromCart, updateQuantity } =
-    useCart();
+  const {
+    getCartItemsWithProducts,
+    removeFromCart,
+    updateQuantity,
+    getCartTotal,
+  } = useCart();
+
+  const total = getCartTotal();
 
   return (
     <div className="px-12 py-8">
       <div className="flex gap-8 flex-col">
         <h1 className="text-2xl font-semibold text-gray-600">Checkout</h1>
-        <div className="">
-          <div className="bg-white w-xl px-8 py-12 rounded-md">
-            <h2 className="text-xl font-semibold text-gray-600 pb-12">
+        <div className="flex flex-row justify-between gap-8">
+          <div className="bg-white w-full px-8 py-12 rounded-md">
+            <h2 className="text-xl font-semibold text-gray-600 pb-8">
               Order Summary
             </h2>
             <div className="flex flex-col gap-8">
               {getCartItemsWithProducts().map((item) => (
                 <div
-                  className="flex flex-row justify-between gap-3"
+                  className="flex flex-row justify-between gap-3 border border-gray-100 rounded py-3 px-2"
                   key={item.product.id}
                 >
                   {" "}
@@ -68,6 +74,18 @@ const Checkout = () => {
                   </div>
                 </div>
               ))}
+            </div>
+          </div>
+          <div className="bg-white min-w-xs px-8 py-12 rounded-md">
+            <h1 className="text-xl font-bold text-gray-600 pb-2">Total</h1>
+            <div className="flex justify-between py-4">
+              <p>Subtotal:</p>
+              <p>${total.toFixed(2)}</p>
+            </div>{" "}
+
+            <div className="flex justify-between py-4">
+              <p className="text-gray-400">Total:</p>
+              <p className="text-blue-500 text-xl font-semibold">${total.toFixed(2)}</p>
             </div>
           </div>
         </div>
