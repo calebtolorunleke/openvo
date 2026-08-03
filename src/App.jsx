@@ -66,6 +66,7 @@ import Navbar from "./components/Navbar";
 import { AuthProvider } from "./context/AuthContext";
 import ProductDetails from "./pages/ProductDetails";
 import { CartProvider } from "./context/CartContext";
+import ProtectedRoute from "./guards/ProtectedRoute";
 
 const App = () => {
   return (
@@ -76,8 +77,22 @@ const App = () => {
           <Routes>
             <Route element={<Home />} path="/" />
             <Route element={<Auth />} path="/auth" />
-            <Route element={<Checkout />} path="/checkout" />
-            <Route element={<ProductDetails />} path="/products/:id" />
+            <Route
+              element={
+                <ProtectedRoute>
+                  <Checkout />
+                </ProtectedRoute>
+              }
+              path="/checkout"
+            />
+            <Route
+              element={
+                <ProtectedRoute>
+                  <ProductDetails />
+                </ProtectedRoute>
+              }
+              path="/products/:id"
+            />
           </Routes>
         </CartProvider>
       </AuthProvider>
