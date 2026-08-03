@@ -15,7 +15,10 @@ const Productcard = ({ product }) => {
         </h3>
         <p className="text-blue-500 font-semibold pb-2">$ {product.price}</p>
         <div className="flex gap-2 text-white">
-          <Link className="bg-gray-400 px-3 text-xs py-2 rounded">
+          <Link
+            className="bg-gray-400 px-3 text-xs py-2 rounded"
+            to={`products/${product.id}`}
+          >
             View Details
           </Link>
           <button className="bg-blue-400 px-3 py-2 text-xs rounded">
