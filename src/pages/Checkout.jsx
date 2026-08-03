@@ -76,16 +76,23 @@ const Checkout = () => {
               ))}
             </div>
           </div>
-          <div className="bg-white min-w-xs px-8 py-12 rounded-md">
+          <div className="bg-white min-w-xs px-8 py-12 rounded-md h-full">
             <h1 className="text-xl font-bold text-gray-600 pb-2">Total</h1>
-            <div className="flex justify-between py-4">
+            <div className="flex justify-between py-4 border-b border-gray-200">
               <p>Subtotal:</p>
               <p>${total.toFixed(2)}</p>
             </div>{" "}
-
-            <div className="flex justify-between py-4">
+            <div className="flex justify-between py-4 border-b-2">
               <p className="text-gray-400">Total:</p>
-              <p className="text-blue-500 text-xl font-semibold">${total.toFixed(2)}</p>
+              <p className="text-blue-500 text-xl font-semibold">
+                ${total.toFixed(2)}
+              </p>
+            </div>
+            <div className="pt-8">
+              {" "}
+              <button className="bg-blue-500 text-white w-full py-3 rounded cursor-pointer">
+                Place Order
+              </button>
             </div>
           </div>
         </div>
