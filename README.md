@@ -1,16 +1,52 @@
-# React + Vite
+# OpenVO 🛒
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Openvo is a modern e-commerce web application built with React that provides users with a seamless shopping experience, including authentication, product browsing, product details, cart management, and checkout functionality.
 
-Currently, two official plugins are available:
+The project focuses on implementing real-world frontend development concepts such as global state management, protected routes, reusable components, and client-side data handling.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+## ✨ Features
 
-## React Compiler
+### Authentication
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+- User signup and login functionality
+- User session management using Context API
+- Protected routes for authenticated users
+- Logout functionality
 
-## Expanding the ESLint configuration
+### Product Management
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+- Browse available products
+- View detailed product information
+- Dynamic product pages using React Router parameters
+
+### Shopping Cart
+
+- Add products to cart
+- Increase/decrease product quantities
+- Remove products from cart
+- Calculate cart totals dynamically
+- Display product information inside the cart
+
+### Checkout
+
+- Order summary view
+- Quantity management
+- Total price calculation
+- Order placement flow
+
+## 🛠️ Tech Stack
+
+### Frontend
+
+- React.js
+- JavaScript (ES6+)
+- React Router DOM
+- Tailwind CSS
+- Context API
+- Vite
+
+### Development Tools
+
+- Git & GitHub
+- Vercel Deployment
+- ESLint
