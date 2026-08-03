@@ -2,7 +2,8 @@ import React from "react";
 import { useCart } from "../context/CartContext";
 
 const Checkout = () => {
-  const { getCartItemsWithProducts } = useCart();
+  const { getCartItemsWithProducts, removeFromCart, updateQuantity } =
+    useCart();
 
   return (
     <div className="px-12 py-8">
@@ -37,16 +38,33 @@ const Checkout = () => {
                   </div>
                   <div className=" flex flex-col items-end">
                     <div className="w-full flex gap-3 items-center pb-3">
-                      <button className="px-3 py-0.5 rounded border-gray-400 border border-black-2">
+                      <button
+                        className="px-3 py-0.5 rounded border-gray-400 border border-black-2"
+                        onClick={() =>
+                          updateQuantity(item.id, item.quantity - 1)
+                        }
+                      >
                         -
                       </button>
                       <span className="px-2 ">{item.quantity}</span>
-                      <button className="px-3 py-0.5 rounded border-gray-400 border border-black-2">
+                      <button
+                        className="px-3 py-0.5 rounded border-gray-400 border border-black-2"
+                        onClick={() =>
+                          updateQuantity(item.id, item.quantity + 1)
+                        }
+                      >
                         +
                       </button>
                     </div>
-                    <p className=" pb-3">${item.product.price * item.quantity}</p>
-                    <button className="px-3 py-1 bg-gray-400 text-white rounded">Remove</button>
+                    <p className=" pb-3">
+                      ${(item.product.price * item.quantity).toFixed(2)}
+                    </p>
+                    <button
+                      className="px-3 py-1 bg-gray-400 text-white rounded"
+                      onClick={() => removeFromCart(item.id)}
+                    >
+                      Remove
+                    </button>
                   </div>
                 </div>
               ))}
