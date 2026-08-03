@@ -1,5 +1,5 @@
 import { createContext, useContext, useState } from "react";
-import { products } from "../data/products";
+import { getProductById, products } from "../data/products";
 
 export const CartContext = createContext(null);
 
@@ -7,13 +7,13 @@ export const CartProvider = ({ children }) => {
   const [cartItems, setCartItems] = useState([]); //{id:2, quantity:7}
 
   const addToCart = (productId) => {
-    const existing = cartItems.find((item) => item.id === products.id);
+    const existing = cartItems.find((item) => item.id === productId);
 
     if (existing) {
       const currentQuantity = existing.quantity;
       const updatedCartItems = cartItems.map((item) =>
         item.id === productId
-          ? { id: productId, quatity: currentQuantity + 1 }
+          ? { id: productId, quantity: currentQuantity + 1 }
           : item,
       );
       setCartItems(updatedCartItems);
@@ -22,10 +22,21 @@ export const CartProvider = ({ children }) => {
     }
   };
 
+  const getCartItemsWithProducts = () => {
+    return cartItems
+      .map((item) => ({
+        ...item,
+        product: getProductById(item.id),
+      }))
+      .filter((item) => item.product);
+  };
+
   return (
-    <AuthContext.Provider value={{ cartItems, addToCart }}>
+    <CartContext.Provider
+      value={{ cartItems, addToCart, getCartItemsWithProducts }}
+    >
       {children}
-    </AuthContext.Provider>
+    </CartContext.Provider>
   );
 };
 
