@@ -80,3 +80,7 @@ export const products = [
       "27-inch 4K IPS monitor with USB-C connectivity, HDR support, and ultra-thin bezels.",
   },
 ];
+
+export const getProductById = (id) => {
+  return products.find((p) => p.id === Number(id));
+};
