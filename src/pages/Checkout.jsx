@@ -27,6 +27,7 @@ const Checkout = () => {
                       {item.product.price}
                     </h3>
                   </div>
+                  <div></div>
                 </div>
               ))}
             </div>
