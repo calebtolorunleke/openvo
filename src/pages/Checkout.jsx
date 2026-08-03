@@ -15,19 +15,30 @@ const Checkout = () => {
             </h2>
             <div className="flex flex-col gap-8">
               {getCartItemsWithProducts().map((item) => (
-                <div className="flex gap-8">
-                  <img
-                    src={item.product.image}
-                    alt={item.product.name}
-                    className="w-30 h-30 object-center object-cover rounded"
-                  />{" "}
-                  <div key={item.id} className="">
-                    <h3 className="pb-3 font-semibold">{item.product.name}</h3>
-                    <h3 className="text-md text-gray-400">
-                      {item.product.price}
-                    </h3>
+                <div className="" key={item.product.id} className>
+                  {" "}
+                  <div className="flex gap-8">
+                    <img
+                      src={item.product.image}
+                      alt={item.product.name}
+                      className="w-30 h-30 object-center object-cover rounded"
+                    />{" "}
+                    <div key={item.id} className="">
+                      <h3 className="pb-3 font-semibold">
+                        {item.product.name}
+                      </h3>
+                      <h3 className="text-md text-gray-400">
+                        {item.product.price}
+                      </h3>
+                    </div>
                   </div>
-                  <div></div>
+                  <div>
+                    <div>
+                      <button>-</button>
+                      <span>0</span>
+                      <button>+</button>
+                    </div>
+                  </div>
                 </div>
               ))}
             </div>
