@@ -7,9 +7,19 @@ const Checkout = () => {
     removeFromCart,
     updateQuantity,
     getCartTotal,
+    clearCart,
   } = useCart();
 
   const total = getCartTotal();
+
+  const placeOrder = () => {
+    if (getCartTotal) {
+      alert("Successful Order!");
+    } else {
+      alert("Cart Iem is empty!");
+    }
+    clearCart();
+  };
 
   return (
     <div className="px-12 py-8">
@@ -90,7 +100,10 @@ const Checkout = () => {
             </div>
             <div className="pt-8">
               {" "}
-              <button className="bg-blue-500 text-white w-full py-3 rounded cursor-pointer">
+              <button
+                className="bg-blue-500 text-white w-full py-3 rounded cursor-pointer"
+                onClick={placeOrder}
+              >
                 Place Order
               </button>
             </div>
