@@ -65,18 +65,21 @@ import Checkout from "./pages/Checkout";
 import Navbar from "./components/Navbar";
 import { AuthProvider } from "./context/AuthContext";
 import ProductDetails from "./pages/ProductDetails";
+import { CartProvider } from "./context/CartContext";
 
 const App = () => {
   return (
     <BrowserRouter>
       <AuthProvider>
-        <Navbar />
-        <Routes>
-          <Route element={<Home />} path="/" />
-          <Route element={<Auth />} path="/auth" />
-          <Route element={<Checkout />} path="/checkout" />
-          <Route element={<ProductDetails />} path="/products/:id" />
-        </Routes>
+        <CartProvider>
+          <Navbar />
+          <Routes>
+            <Route element={<Home />} path="/" />
+            <Route element={<Auth />} path="/auth" />
+            <Route element={<Checkout />} path="/checkout" />
+            <Route element={<ProductDetails />} path="/products/:id" />
+          </Routes>
+        </CartProvider>
       </AuthProvider>
     </BrowserRouter>
   );
