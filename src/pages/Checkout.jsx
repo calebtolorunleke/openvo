@@ -8,15 +8,16 @@ const Checkout = () => {
     updateQuantity,
     getCartTotal,
     clearCart,
+    cartItems,
   } = useCart();
 
   const total = getCartTotal();
 
   const placeOrder = () => {
-    if (getCartTotal) {
+    if (cartItems.length > 0) {
       alert("Successful Order!");
     } else {
-      alert("Cart Iem is empty!");
+      alert("Cart Item is empty!");
     }
     clearCart();
   };
@@ -101,8 +102,9 @@ const Checkout = () => {
             <div className="pt-8">
               {" "}
               <button
-                className="bg-blue-500 text-white w-full py-3 rounded cursor-pointer"
+                className="bg-blue-500 text-white w-full py-3 rounded cursor-pointer disabled:bg-gray-300 disabled:cursor-not-allowed"
                 onClick={placeOrder}
+                disabled={cartItems.length === 0}
               >
                 Place Order
               </button>
